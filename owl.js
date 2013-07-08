@@ -78,7 +78,7 @@ OWL.prototype.connect = function ( ) {
 			*/
 			var heating = { 'signal':{'rssi': buff.childs[0].attrib.rssi, 'lqi':buff.childs[0].attrib.lqi},
 							'battery': buff.childs[1].attrib.level,
-							'temperature': {'current': buff.childs[2].childs[0], 'required':buff.childs[2].childs[1]}
+							'temperature': {'current': buff.childs[2].childs[0].childs[0], 'required':buff.childs[2].childs[1].childs[0]}
 						  };
 			self.emit( 'heating', heating );
 		

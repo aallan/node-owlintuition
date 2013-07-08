@@ -58,12 +58,8 @@ where you will receive and event an object of the form,
 	     "lqi":"49"},
 	 "battery":"2990mV",
 	 "temperature":
-	    {"current":
-	        {"name":"current",
-	         "childs":["20.30"]},
-	     "required":
-	        {"name":"required",
-	         "childs":["15.00"]}}}
+	    {"current":"20.12",
+	     "required":"15.00"}}
 	
 passed back to your callback function. Finally for the local weather,
 
