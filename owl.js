@@ -63,7 +63,7 @@ OWL.prototype.connect = function ( ) {
 							  };
 			self.emit( 'electricity', electricity );		
 		
-	 	} else if ( buff.name === 'heathing' ) {
+	 	} else if ( buff.name === 'heating' ) {
 			/*
 			{ name: 'heating',
 			  attrib: { id: '443719001958' },
