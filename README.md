@@ -1,7 +1,7 @@
 node-owlintuition
 =================
 
-node.js library for the [OWL Intuition range](http://www.theowl.com) of energy monitoring and control systems
+node.js library for the [OWL Intuition range](http://www.theowl.com) of energy monitoring and control systems. It has been tested against v2.0 and v2.1 of the Network OWL firmware.
 
 Install
 -------

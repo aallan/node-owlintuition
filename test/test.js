@@ -11,15 +11,15 @@ monitor.on('connect', function( event ) {
 });
 
 monitor.on('electricity', function( event ) {
-	console.log( "electricity", util.inspect(event) );
+	console.log( "electricity = " + util.inspect(event, {"depth": null}) );
 });
 
 monitor.on('heating', function( event ) {
-	console.log( "heating", util.inspect(event) );
+	console.log( "heating = " + util.inspect( event, {"depth": null}) );
 });
 
 monitor.on('weather', function( event ) {
-	console.log( "weather", util.inspect(event) );
+	console.log( "weather = " + util.inspect( event, {"depth": null}) );
 });
 
 monitor.on('disconnect', function( event ) {
