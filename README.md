@@ -45,7 +45,7 @@ where you will receive and event an object of the form,
 	        {"day":"0.00",
 	         "units":"wh"}]}}	
 
-will be passed as an argument to your callback function. The second message is for a heating if a Intuition-c Room Monitor has been installed,	
+will be passed as an argument to your callback function. The second message is for heating if a Intuition-c Room Monitor has been installed,	
 
 	monitor.on('heating', function( event ) {
 		
