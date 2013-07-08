@@ -1,6 +1,6 @@
 {
   "name": "owlintuition",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "node.js library for the OWL Intuition range of energy monitoring and control systems",
   "keywords": [
     "owl",
@@ -9,6 +9,7 @@
 	"smart meters"
   ],
   "dependencies": {
+    "node-xml-lite":">=0.02"
   },
   "homepage": "https://github.com/aallan/node-owlintuition",
   "repository": {
