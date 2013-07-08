@@ -61,7 +61,7 @@ OWL.prototype.connect = function ( ) {
 												{'day':buff.childs[4].childs[1].childs[0],'units':buff.childs[4].childs[1].attrib.units}]
 										   }
 							  };
-			self.emit( 'electricity', JSON.stringify(electricity) );		
+			self.emit( 'electricity', electricity );		
 		
 	 	} else if ( buff.name === 'heathing' ) {
 			/*
@@ -80,7 +80,7 @@ OWL.prototype.connect = function ( ) {
 							'battery': buff.childs[1].attrib.level,
 							'temperature': {'current': buff.childs[2].childs[0], 'required':buff.childs[2].childs[1]}
 						  };
-			self.emit( 'heating', JSON.stringify(heating) );
+			self.emit( 'heating', heating );
 		
 		
 	 	} else if ( buff.name == 'weather' ) {
@@ -93,7 +93,7 @@ OWL.prototype.connect = function ( ) {
 			*/
 		
 		    var weather = { 'temperature': buff.childs[0].childs[0], 'forecast': buff.childs[1].childs[0] };
-			self.emit( 'weather', JSON.stringify(weather) );
+			self.emit( 'weather', weather );
 		
 		
 		} else {
