@@ -51,7 +51,8 @@ OWL.prototype.connect = function ( ) {
 			        [ { name: 'curr', attrib: { units: 'w' }, childs: [ '0.00' ] },
 			          { name: 'day', attrib: { units: 'wh' }, childs: [ '0.00' ] } ] } ] }
 			*/
-			var electricity = { 'signal':{'rssi': buff.childs[0].attrib.rssi, 'lqi':buff.childs[0].attrib.lqi},
+			var electricity = { 'id': buff.attrib.id,
+								'signal':{'rssi': buff.childs[0].attrib.rssi, 'lqi':buff.childs[0].attrib.lqi},
 								'battery': buff.childs[1].attrib.level,
 								'channels':{'0':[{'current':buff.childs[2].childs[0].childs[0],'units':buff.childs[2].childs[0].attrib.units},
 												{'day':buff.childs[2].childs[1].childs[0],'units':buff.childs[2].childs[1].attrib.units}],
@@ -76,7 +77,8 @@ OWL.prototype.connect = function ( ) {
 			        [ { name: 'current', childs: [ '19.68' ] },
 			          { name: 'required', childs: [ '15.00' ] } ] } ] }
 			*/
-			var heating = { 'signal':{'rssi': buff.childs[0].attrib.rssi, 'lqi':buff.childs[0].attrib.lqi},
+			var heating = { 'id': buff.attrib.id,
+							'signal':{'rssi': buff.childs[0].attrib.rssi, 'lqi':buff.childs[0].attrib.lqi},
 							'battery': buff.childs[1].attrib.level,
 							'temperature': {'current': buff.childs[2].childs[0].childs[0], 'required':buff.childs[2].childs[1].childs[0]}
 						  };
@@ -92,7 +94,9 @@ OWL.prototype.connect = function ( ) {
 			     { name: 'text', childs: [ 'Clear/Sunny' ] } ] }
 			*/
 		
-		    var weather = { 'temperature': buff.childs[0].childs[0], 'forecast': buff.childs[1].childs[0] };
+		    var weather = { 'id': buff.attrib.id,
+							'temperature': buff.childs[0].childs[0], 
+							'forecast': buff.childs[1].childs[0] };
 			self.emit( 'weather', weather );
 		
 		

@@ -24,7 +24,8 @@ you can subscribe to three different events. The first message is for electricit
 	
 where you will receive an event object of the form,
 	
-	{"signal":
+	{"id":"443719001958",
+	 "signal":
 	    {"rssi":"-66",
 	     "lqi":"127"},
 	 "battery":"100%",
@@ -53,7 +54,8 @@ as an argument to your callback function. The second message is for heating upda
 
 where you will receive and event an object of the form, 
 	
-	{"signal":
+	{"id":"443719001958",
+	 "signal":
 	    {"rssi":"-74",
 	     "lqi":"49"},
 	 "battery":"2990mV",
@@ -69,7 +71,8 @@ passed back as an argument to your callback function. Finally the third and last
 	
 where you will receive and event an object of the form,
 
-	{"temperature":"16.00",
+	{"id":"443719001958",
+	 "temperature":"16.00",
 	 "forecast":"Clear/Sunny"}
 	
 passed back to your callback function. There is also an error message if the module encounters a 'new' unknown message over multicast,
