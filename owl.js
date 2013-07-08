@@ -22,12 +22,11 @@ OWL.prototype.connect = function ( ) {
 	});
 
 	socket.on("listening", function() {
-		this.emit('connect');
+		self.emit('connect');
 		
 	});
 	
 	socket.on("message", function(msg, rinfo) {
-	  //console.log("server got: " + msg + " from " + rinfo.address + ":" + rinfo.port);	
 	  	var buff = xml.parseString( msg )	
 		if ( buff.name === 'electricity' ) {
 			/* 
