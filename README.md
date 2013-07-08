@@ -88,7 +88,7 @@ To Do
 
 The following still needs to be implemented.
 
-* Add support for "<solar> ... </solar> message type.
+* Add support for "solar" message type.
 
 # LICENSE
 
