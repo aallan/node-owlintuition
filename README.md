@@ -16,13 +16,13 @@ Create an instance of the owl class and connect to the multicast broadcast from 
     var OWL = require('owl');
 	monitor.connect();
 
-you can subscribe to three different events. The first is for an electricity message,
+you can subscribe to three different events. The first message is for electricity updates,
 	
 	monitor.on('electricity', function( event ) {
 
 	});
 	
-where you will receive and event an object of the form,
+where you will receive an event object of the form,
 	
 	{"signal":
 	    {"rssi":"-66",
@@ -45,7 +45,7 @@ where you will receive and event an object of the form,
 	        {"day":"0.00",
 	         "units":"wh"}]}}	
 
-will be passed as an argument to your callback function. The second message is for heating if a Intuition-c Room Monitor has been installed,	
+as an argument to your callback function. The second message is for heating updates, and will only occur if a Intuition-c Room Monitor has been installed,	
 
 	monitor.on('heating', function( event ) {
 		
@@ -61,7 +61,7 @@ where you will receive and event an object of the form,
 	    {"current":"20.12",
 	     "required":"15.00"}}
 	
-passed back to your callback function. Finally for the local weather,
+passed back as an argument to your callback function. Finally the third and last message type is for periodic local weather updates,
 
 	monitor.on('weather', function( event ) {
 		
