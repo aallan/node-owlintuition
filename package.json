@@ -1,0 +1,25 @@
+{
+  "name": "owlintuition",
+  "version": "0.0.1",
+  "description": "node.js library for the OWL Intuition range of energy monitoring and control systems",
+  "keywords": [
+    "owl",
+    "electricity",
+    "heating",
+	"smart meters"
+  ],
+  "dependencies": {
+  },
+  "homepage": "https://github.com/aallan/node-owlintuition",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/aallan/node-owlintuition"
+  },
+  "author": {
+    "name": "Alasdair Allan",
+    "email": "alasdair@babilim.co.uk",
+    "url": "https://github.com/aallan"
+  },
+  "engine": "node >= 0.10.0",
+  "main": "./owl.js"
+}
