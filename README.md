@@ -83,6 +83,13 @@ passed back to your callback function. There is also an error message if the mod
 	
 where a string describing the error will be returned.
 
+To Do
+-------
+
+The following still needs to be implemented.
+
+* Add support for "<solar> ... </solar> message type.
+
 # LICENSE
 
 This software is distributed under the [MIT](http://en.wikipedia.org/wiki/MIT_License) license.
