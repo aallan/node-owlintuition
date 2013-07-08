@@ -22,6 +22,7 @@ OWL.prototype.connect = function ( ) {
 	});
 
 	socket.on("listening", function() {
+		this.emit('connect');
 		
 	});
 	
@@ -101,7 +102,7 @@ OWL.prototype.connect = function ( ) {
 		
 		
 		} else {
-			self.emit( 'error', "Error: Unknown message of type " + buff.name + "recieved.");
+			self.emit( 'error', new Error("Error: Unknown message of type " + buff.name + " recieved."));
 		}	  	
 	
 		//console.log( util.inspect( buf , {depth: null}));
@@ -111,7 +112,7 @@ OWL.prototype.connect = function ( ) {
 
 OWL.prototype.disconnect = function ( ) {
 	socket.close();
-	this.emit('argh');
+	this.emit('disconnect');
 	
 }
 
