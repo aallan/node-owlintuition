@@ -22,6 +22,10 @@ monitor.on('weather', function( event ) {
 	console.log( "weather = " + util.inspect( event, {"depth": null}) );
 });
 
+monitor.on('solar', function( event ) {
+	console.log( "solar = " + util.inspect(event, {"depth": null}) );
+});
+
 monitor.on('disconnect', function( event ) {
 	console.log( "disconnect" );
 });

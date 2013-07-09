@@ -16,7 +16,7 @@ Create an instance of the owl class and connect to the multicast broadcast from 
     var OWL = require('owl');
 	monitor.connect();
 
-you can subscribe to three different events. The first message is for electricity updates,
+you can subscribe to four different event messages. The first message is for electricity updates,
 	
 	monitor.on('electricity', function( event ) {
 
@@ -31,20 +31,14 @@ where you will receive an event object of the form,
 	 "battery":"100%",
 	 "channels":
 	    {"0":[
-	        {"current":"241.00",
-	         "units":"w"},
-	        {"day":"823.49",
-	         "units":"wh"}],
+	        {"current":"241.00", "units":"w"},
+	        {"day":"823.49", "units":"wh"}],
 	     "1":[
-	        {"current":"0.00",
-	         "units":"w"},
-	        {"day":"0.00",
-	         "units":"wh"}],
+	        {"current":"0.00", "units":"w"},
+	        {"day":"0.00", "units":"wh"}],
 	     "2":[
-	        {"current":"0.00",
-	         "units":"w"},
-	        {"day":"0.00",
-	         "units":"wh"}]}}		
+	        {"current":"0.00", "units":"w"},
+	        {"day":"0.00", "units":"wh"}]}}		
 
 as an argument to your callback function. The second message is for heating updates, and will only occur if a Intuition-c Room Monitor has been installed,	
 
@@ -52,7 +46,7 @@ as an argument to your callback function. The second message is for heating upda
 		
 	});
 
-where you will receive and event an object of the form, 
+where you will receive an event object of the form, 
 	
       {"id":443719001958,
        "signal":
@@ -65,33 +59,42 @@ where you will receive and event an object of the form,
            "current":21.25,
            "required":20}}
 	
-passed back as an argument to your callback function. Finally the third and last message type is for periodic local weather updates,
+passed back as an argument to your callback function. The third and last message type is for periodic local weather updates,
 
 	monitor.on('weather', function( event ) {
 		
 	});
 	
-where you will receive and event an object of the form,
+where you will receive an event object of the form,
 
       {"id":443719001958,
        "code":113,
        "temperature":"26.01",
        "text":"Clear/Sunny"}
 	
-passed back to your callback function. There is also an error message if the module encounters a 'new' unknown message over multicast,
+passed back to your callback function. Finally the fourth message is for solar updates,
+
+    monitor.on('solar', function(event) {
+	
+    });
+
+where you will receive an event object of the form
+
+      {"id":"443719001958",
+       "current":[
+          {"generating":1000,"units":"w"},
+          {"exporting":730, "units":"w"}],
+       "day":[
+          {"generated":23000, "units":"wh"},
+          {"exported":17000, "units":"wh"}]}
+
+There is also an error message if the module encounters a 'new' unknown message over multicast,
 
 	monitor.on('error', function( message ) {
 	
 	});	
 	
 where a string describing the error will be returned.
-
-To Do
--------
-
-The following still needs to be implemented.
-
-* Add support for "solar" message type.
 
 # LICENSE
 

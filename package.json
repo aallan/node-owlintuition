@@ -1,6 +1,6 @@
 {
   "name": "owlintuition",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "node.js library for the OWL Intuition range of energy monitoring and control systems",
   "keywords": [
     "owl",

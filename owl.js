@@ -25,7 +25,7 @@ OWL.prototype.connect = function ( ) {
 		
 	});
 	
-	self.socket.on("message", function(msg, rinfo) {
+	self.socket.on("message", function(msg, rinfo) {		
 		var json = xml.toJson( msg );
 		var buff = JSON.parse( json );
 		//console.log( util.inspect( buff , {depth: null}));
@@ -64,6 +64,15 @@ OWL.prototype.connect = function ( ) {
 		
 	 	} else if ( buff.weather ) {
 			self.emit( 'weather', JSON.stringify(buff.weather) );
+		
+		} else if ( buff.solar ) {
+			var solar = { 'id':buff.solar.id,
+						  'current':[{'generating':buff.solar.current.generating.$t,'units':buff.solar.current.generating.units},
+									 {'exporting':buff.solar.current.exporting.$t, 'units':buff.solar.current.exporting.units}],
+						  'day':[{'generated':buff.solar.day.generated.$t,'units':buff.solar.day.generated.units},
+								 {'exported':buff.solar.day.exported.$t, 'units':buff.solar.day.exported.units}] };			
+		
+			self.emit( 'solar', JSON.stringify(solar) );
 		
 		} else {
 			self.emit( 'error', new Error("Unknown message of type received: " + buff ));
