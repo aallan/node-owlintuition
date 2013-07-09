@@ -74,7 +74,7 @@ OWL.prototype.connect = function ( ) {
 }
 
 OWL.prototype.disconnect = function ( ) {
-	self.socket.close();
+	this.socket.close();
 	this.emit('disconnect');
 	
 }
