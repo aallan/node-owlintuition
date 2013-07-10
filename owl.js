@@ -75,7 +75,7 @@ OWL.prototype.connect = function ( ) {
 			self.emit( 'solar', JSON.stringify(solar) );
 		
 		} else {
-			self.emit( 'error', new Error("Unknown message of type received: " + buff ));
+			self.emit( 'error', new Error("Unknown message of received. XML = " + msg + ", JSON = " + json ));
 		}	  	
 	
 	});	
