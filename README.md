@@ -114,7 +114,7 @@ There is also an error message if the module encounters a 'new' unknown message 
 	
 	});	
 	
-where a Javascript Error object will be returned. The string describing the unknown message will both the original multicast XML packet, and the JSON translation of the message.
+where a Javascript Error object will be returned. The string describing the unknown message will contain both the original multicast XML packet, and the JSON translation of the message.
 
 # LICENSE
 
