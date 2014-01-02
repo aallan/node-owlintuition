@@ -1,32 +1,35 @@
-node-owlintuition
-=================
+#node-owlintuition
 
-node.js library for the [OWL Intuition range](http://www.theowl.com) of energy monitoring and control systems. It has been tested against v2.0 and v2.1 of the Network OWL firmware.
 
-Install
--------
+This is a node.js library for the [OWL Intuition range](http://www.theowl.com) of energy monitoring and control systems. It has been tested against v2.0 and v2.1 of the Network OWL firmware.
 
-npm install owlintuition
+##Installation
 
-Usage
------
+Installation is via npm
+
+    npm install owlintuition
+
+##Monitoring
 
 Create an instance of the owl class and connect to the multicast broadcast from the Network OWL,
 
     var OWL = require('owl');
-	monitor.connect();
+	var owl = new OWL();
+	owl.monitor();
 
-you can subscribe to four different event messages. 
+you can subscribe to four different event messages.
 
 ###Electricity
 
 The first message is for electricity updates,
-	
-	monitor.on('electricity', function( event ) {
 
+	
+	owl.on('electricity', function( event ) {
 	});
 	
+
 where you will receive an event object of the form,
+
 	
 	{"id":"443719001958",
 	 "signal":
@@ -50,11 +53,12 @@ as an argument to your callback function. The channels contain data for the curr
 
 The second message is for heating updates, and will only occur if a Intuition-c Room Monitor has been installed,	
 
-	monitor.on('heating', function( event ) {
+	owl.on('heating', function( event ) {
 		
 	});
 
 where you will receive an event object of the form, 
+
 	
       {"id":443719001958,
        "signal":
@@ -67,16 +71,18 @@ where you will receive an event object of the form,
            "current":21.25,
            "required":20}}
 	
+
 passed back as an argument to your callback function. The temperature subsection, contains the current room temperature and the required room temperature. Both values are in degrees Celsius.
 
 ###Weather
 
 The third and last message type is for periodic local weather updates,
 
-	monitor.on('weather', function( event ) {
+	owl.on('weather', function( event ) {
 		
 	});
 	
+
 where you will receive an event object of the form,
 
       {"id":443719001958,
@@ -84,13 +90,14 @@ where you will receive an event object of the form,
        "temperature":"26.01",
        "text":"Clear/Sunny"}
 	
+
 passed back to your callback function. The temperature is the current outside temperature for the postcode assigned to the Network OWL. The text is a textural description of the weather at that postcode.
 
 ###Solar
 
 Finally the fourth message is for solar updates, and will only occur if an Intuition-pv system is installed,
 
-    monitor.on('solar', function(event) {
+    owl.on('solar', function(event) {
 	
     });
 
@@ -110,11 +117,55 @@ This contains sections for the current solar readings and the totals for the day
 
 There is also an error message if the module encounters a 'new' unknown message over multicast,
 
-	monitor.on('error', function( error ) {
+	owl.on('error', function( error ) {
 	
 	});	
 	
+
 where a Javascript Error object will be returned. The string describing the unknown message will contain both the original multicast XML packet, and the JSON translation of the message.
+
+##Control
+
+You can issue commands to the Network OWL by configuring the instance of the owl class with the IP address of the Network OWL device, and your UDP key. 
+
+    owl.configure( '192.168.1.x', '11AABB' );
+
+Each Network OWL has a unique UDP key which can be requested from The OWL customer services at customer.services@theowl.com. Commands will only be processed if a valid UDP key used.
+
+All control functions will return an event you can subscribe to,
+
+    owl.on('control', function( event ) {
+    
+    });	
+
+where you will receive an event object of the form,
+
+      {"status":"OK",
+       "result":"..."}
+	
+
+passed back to your callback function. Where the result is a comma seperated string containing the result passed from the Network OWL.
+
+**Note:** Only a subset of the commands supported by the Network OWL are implemented at this time. Pull requests are always welcome.
+
+###Version
+
+Retrieves the version information from the device.
+
+    owl.version();
+
+###Uptime
+
+Retrieves the run time of the device in days, hours, minutes and seconds.
+
+    owl.uptime();
+
+##Closing Connection
+
+Stop monitoring the multicast socket, and if configured, the control socket,
+
+    owl.stop();
+
 
 # LICENSE
 
