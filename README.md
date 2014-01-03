@@ -130,7 +130,7 @@ You can issue commands to the Network OWL by configuring the instance of the owl
 
     owl.configure( '192.168.1.x', '11AABB' );
 
-Each Network OWL has a unique UDP key which can be requested from The OWL customer services at customer.services@theowl.com. Commands will only be processed if a valid UDP key used.
+Each Network OWL has a unique UDP key which can be requested from The OWL customer services at customer.services@theowl.com. Commands will only be processed if a valid UDP key is used.
 
 All control functions will return an event you can subscribe to,
 
@@ -159,6 +159,28 @@ Retrieves the version information from the device.
 Retrieves the run time of the device in days, hours, minutes and seconds.
 
     owl.uptime();
+
+
+###Device
+
+Manages interal device list. Allows you to view device details.
+
+    owl.device();	
+
+###Device
+
+Returns the MAC ID of this network owl.
+
+	owl.mac();	
+
+###Boost
+
+Boosts the heating temperature.
+
+    owl.boost("ON");
+    owl.boost("OFF");
+
+will turn the BOOST status ON or OFF respectively.
 
 ##Closing Connection
 

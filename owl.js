@@ -35,7 +35,14 @@ OWL.prototype.configure = function ( ip, key ) {
 		string = string.trim();
 		
 	    var array = string.split(',');
-		var result = { 'status':array.shift(),'result':string.substring(3) };
+		
+		var status = array.shift();
+		var result = null;
+		if ( status === "OK") {
+			result = { 'status':status,'result':string.substring(3) };
+		} else if ( status === "ERROR" ) {
+			result = { 'status':status,'result':string.substring(6) };
+		}
 		self.emit( 'control', result );
 	});
 	
@@ -66,6 +73,54 @@ OWL.prototype.uptime = function ( ) {
 			self.emit( 'error', err );
 		}
 	})
+	
+}
+
+// mac() 
+// Returns the MAC ID of this network owl.
+OWL.prototype.mac = function ( ) {
+	var self = this;	
+	var message = new Buffer("GET,MAC,"+self.udpkey);
+	self.owlsocket.send( message, 0, message.length, self.OWL_PORT, self.OWL_HOST, function(err, bytes) {
+		if( err ) {
+			self.emit( 'error', err );
+		}
+	})
+	
+}
+
+// device()
+// Manages internal device list. Allows user to add, delete and view device details.
+OWL.prototype.device = function ( ) {
+	var self = this;	
+	var message = new Buffer("GET,DEVICE,ALL,"+self.udpkey);
+	self.owlsocket.send( message, 0, message.length, self.OWL_PORT, self.OWL_HOST, function(err, bytes) {
+		if( err ) {
+			self.emit( 'error', err );
+		}
+	})
+	
+}
+
+// boost()
+// Boosts the heating temperature. Toggles the boost on/off.
+OWL.prototype.boost = function ( setting ) {
+	var self = this;
+	var string = setting;
+	
+	if ( string === "ON" || string === "OFF ") {
+		var message = new Buffer("BOOST,"+string+","+self.udpkey);
+		console.log( "buffer = " + message );
+		self.owlsocket.send( message, 0, message.length, self.OWL_PORT, self.OWL_HOST, function(err, bytes) {
+			if( err ) {
+				self.emit( 'error', err );
+			}
+		})		
+	} else {
+		self.emit( 'error', new Error("Unknown command "+string+" sent to BOOST command" ));
+	}
+	
+
 	
 }
 

@@ -4,14 +4,14 @@ var util = require('util');
 var OWL = require('../owl');
 
 var owl = new OWL();
-owl.configure( '192.168.1.109', '771556A0' );
+owl.configure( '192.168.1.73', '771556A0' );
 
 
-console.log("calling version()");
-owl.version();
-
-console.log("calling uptime()");
-owl.uptime();
+//owl.version();
+//owl.uptime();
+//owl.device();
+owl.boost("ON");
+//owl.mac();
 
 // Event Messages --------------------------------------------------------
 
@@ -25,4 +25,8 @@ owl.on('control', function( event ) {
 
 owl.on('disconnect', function( event ) {
 	console.log( "disconnect" );
+});
+
+owl.on('error', function( error ) {
+	console.log( "response = " + util.inspect( error, {"depth": null}) );
 });
