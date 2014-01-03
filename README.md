@@ -167,7 +167,7 @@ Manages interal device list. Allows you to view device details.
 
     owl.device();	
 
-###Device
+###Mac
 
 Returns the MAC ID of this network owl.
 
