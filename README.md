@@ -13,7 +13,7 @@ Installation is via npm
 
 Create an instance of the owl class and connect to the multicast broadcast from the Network OWL,
 
-    var OWL = require('owl');
+    var OWL = require('owlintuition');
 	var owl = new OWL();
 	owl.monitor();
 
