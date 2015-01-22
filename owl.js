@@ -171,16 +171,26 @@ OWL.prototype.monitor = function ( ) {
 			self.emit( 'electricity', JSON.stringify(electricity) );		
 		
 	 	} else if ( buff.heating ) {
-		    var heating = { 'id':buff.heating.id,
-							'signal':buff.heating.signal,
-							'battery':buff.heating.battery.level,
-							'temperature':buff.heating.temperature };
-		
-			self.emit( 'heating', JSON.stringify(heating) );
-		
+			if(buff.heating.zones && buff.heating.zones.zone)
+      {
+        var heating = { 'id':buff.heating.id,
+                'signal':buff.heating.zones.zone.signal,
+                'battery':buff.heating.zones.zone.battery.level,
+                'temperature':buff.heating.zones.zone.temperature };
+      
+        self.emit( 'heating', JSON.stringify(heating) );
+      }
+      else
+      {
+        var heating = { 'id':buff.heating.id,
+                'signal':buff.heating.signal,
+                'battery':buff.heating.battery.level,
+                'temperature':buff.heating.temperature };
+      
+        self.emit( 'heating', JSON.stringify(heating) );
+      }
 	 	} else if ( buff.weather ) {
 			self.emit( 'weather', JSON.stringify(buff.weather) );
-		
 		} else if ( buff.solar ) {
 			var solar = { 'id':buff.solar.id,
 						  'current':[{'generating':buff.solar.current.generating.$t,'units':buff.solar.current.generating.units},
