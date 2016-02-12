@@ -149,15 +149,15 @@ OWL.prototype.monitor = function ( ) {
 		if ( buff.electricity ) {			
 			var channel0, channel1, channel2 = null;
 			buff.electricity.chan.forEach(function(entry) {
-			    if( entry.id === 0 ) {
+			    if( parseInt(entry.id) === 0 ) {
 					channel0 = [{'current':entry.curr.$t,'units':entry.curr.units},
 								{'day':entry.day.$t,'units':entry.day.units}];
 				}
-				if( entry.id === 1 ) {
+				if( parseInt(entry.id) === 1 ) {
 					channel1 = [{'current':entry.curr.$t,'units':entry.curr.units},
 								{'day':entry.day.$t,'units':entry.day.units}];
 				}
-				if( entry.id === 2 ) {
+				if( parseInt(entry.id) === 2 ) {
 					channel2 = [{'current':entry.curr.$t,'units':entry.curr.units},
 								{'day':entry.day.$t,'units':entry.day.units}];
 				}
