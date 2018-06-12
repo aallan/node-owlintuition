@@ -16,7 +16,7 @@ var OWL = function( ) {
 }
 util.inherits(OWL, EventEmitter);
 
-OWL.prototype.configure = function ( ip, key ) {
+OWL.prototype.configure = function ( ip, key) {
 	var self = this;
 	
 	self.OWL_HOST = ip;
@@ -126,15 +126,20 @@ OWL.prototype.boost = function ( setting ) {
 
 // Monitoring ---------------------------------------------------------------------------
 
-OWL.prototype.monitor = function ( ) {
+OWL.prototype.monitor = function (unicast_port = null) {
 	var LOCAL_BROADCAST_HOST = '224.192.32.19';
 	var LOCAL_BROADCAST_PORT = 22600;
 	var self = this;
 	
 	self.multicastsocket = dgram.createSocket('udp4');
-	self.multicastsocket.bind(LOCAL_BROADCAST_PORT, function() {
-	  self.multicastsocket.addMembership(LOCAL_BROADCAST_HOST);
-	});
+
+	if (unicast_port == null) {
+		self.multicastsocket.bind(LOCAL_BROADCAST_PORT, function() {
+		  self.multicastsocket.addMembership(LOCAL_BROADCAST_HOST);
+		});
+	} else {
+		self.multicastsocket.bind(unicast_port);
+	}
 
 	self.multicastsocket.on("listening", function() {
 		self.emit('connect');
