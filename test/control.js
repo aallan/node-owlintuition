@@ -4,13 +4,13 @@ var util = require('util');
 var OWL = require('../owl');
 
 var owl = new OWL();
-owl.configure( '192.168.1.73', '771556A0' );
+owl.configure( '192.168.1.74', '771556A0' );
 
 
-//owl.version();
+owl.version();
 //owl.uptime();
 //owl.device();
-owl.boost("ON");
+//owl.boost("ON");
 //owl.mac();
 
 // Event Messages --------------------------------------------------------
