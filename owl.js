@@ -153,7 +153,8 @@ OWL.prototype.monitor = function (unicast_port = null) {
 
 		if ( buff.electricity ) {			
 			var channel0, channel1, channel2 = null;
-			buff.electricity.channels.chan.forEach(function(entry) {
+			var channels = buff.electricity.channels ? buff.electricity.channels : buff.electricity.chan;
+			channels.chan.forEach(function(entry) {
 			    if( parseInt(entry.id) === 0 ) {
 					channel0 = [{'current':entry.curr.$t,'units':entry.curr.units},
 								{'day':entry.day.$t,'units':entry.day.units}];
